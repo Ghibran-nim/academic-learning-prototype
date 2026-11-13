@@ -1,0 +1,4 @@
+{"color":{"mint":"#C8FAF7","turquoise":"#48E6C6","magenta":"#A90B70","pink":"#D84C9D","lime":"#9BF52F","purple":"#64106E","yellow":"#FFD93D","outline":"#29232B","white":"#FFFFFF","subjects":{"mathematics":"#D84C9D","physics":"#64106E","chemistry":"#48E6C6","biology":"#9BF52F","english":"#FFD93D","indonesian":"#A90B70","history":"#FF8A5B","geography":"#5CC8FF"}},
+"typography":{"family":"Fredoka, 'Baloo 2', Nunito, sans-serif","h1":"36-38/700 magenta","h2":"24/700 purple","h3":"18/600","body":"15/400","caption":"12-13/500","button":"18/600","nav":"12/600"},
+"outline":{"width":3,"color":"#29232B"},"shadow":{"card":"4px 4px 0 #29232B","button":"0 5px 0 #29232B","pressed":"0 1px 0 #29232B"},
+"radius":{"pill":999,"card":26,"option":22,"bubble":"28 28 28 6","bar":14},"spacing":[4,8,12,14,18,24],"tilt":"cards rotate ±1.5deg"}
