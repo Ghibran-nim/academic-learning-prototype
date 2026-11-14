@@ -50,5 +50,12 @@ function submitQ(){S.sub=true;if(S.sel==QZ[S.q][2]){S.score++;gain(20)}render()}
 function nextQ(){if(S.q<QZ.length-1){S.q++;S.sel=null;S.sub=false;return render()}
 S.quizzes++;S.acts.push('Quiz Aljabar: '+S.score+'/3');gain(50,'Quiz completed!');unlock('quiz');if(S.score==3)unlock('perfect');if(!S.daily){S.daily=true;S.streak=7;unlock('streak')}go('challenges','result')}
 const NAV=[['home','home','Home'],['explore','compass','Explore'],['challenges','bolt','Challenges'],['progress','bars','Progress'],['profile','face','Profile']];
-function render(){$('#screen').innerHTML=V[S.v]();$('#screen').scrollTop=0;$('#nav').innerHTML=NAV.map(n=>`<button class="${S.tab==n[0]?'on':''}" onclick="go('${n[0]}')">${ico(n[1],30,C.pink,C.tur)}${n[2]}</button>`).join('')}
+function buildNav(){$('#nav').innerHTML='<span class="bub"><i></i></span>'+NAV.map(n=>`<button onclick="go('${n[0]}')">${ico(n[1],30,C.pink,C.tur)}${n[2]}</button>`).join('')}
+// Bottom nav: buttons are built once; only the "bubble" slides (CSS transition), so the move is smooth.
+function updNav(){const nav=$('#nav');if(!nav.firstChild)buildNav();const bub=nav.querySelector('.bub'),idx=NAV.findIndex(n=>n[0]==S.tab),prev=bub.dataset.i===undefined?NaN:+bub.dataset.i;
+nav.querySelectorAll('button').forEach((b,k)=>b.classList.toggle('on',k==idx));
+if(isNaN(prev)){bub.style.transition='none';bub.style.transform=`translateX(${idx*100}%)`;requestAnimationFrame(()=>requestAnimationFrame(()=>bub.style.transition=''))}
+else if(prev!==idx){bub.style.transform=`translateX(${idx*100}%)`;bub.classList.remove('go');void bub.offsetWidth;bub.classList.add('go')}
+bub.dataset.i=idx}
+function render(){$('#screen').innerHTML=V[S.v]();$('#screen').scrollTop=0;updNav()}
 render();
